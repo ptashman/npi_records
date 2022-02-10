@@ -1,0 +1,17 @@
+<%= form_with(model: npi_record, local: true) do |form| %>
+  <% if npi_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(npi_record.errors.count, "error") %> prohibited this npi_record from being saved:</h2>
+
+      <ul>
+      <% npi_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
