@@ -1,4 +1,8 @@
 class NpiRecord < ApplicationRecord
+  has_many :addresses
+  has_many :identifiers
+  has_many :taxonomies
+
   def self.update_or_create_by_identifier!(identifier)
     api_record_data = NpiRegistryService.new(identifier)
                                         .get_record_data
@@ -13,7 +17,7 @@ class NpiRecord < ApplicationRecord
 
   private
 
-  def npi_record_data(api_record_data)
+  def self.npi_record_data(api_record_data)
     base_attrs = api_record_data.select do |key, _value|
       key == :enumeration_type || key == :number ||
         key == :last_updated_epoch || key == :created_epoch

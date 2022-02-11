@@ -1,0 +1,22 @@
+<h1>Addresses</h1>
+
+<table>
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <% address.attributes.keys.each do |label| %>
+          <th>
+            <%= label %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <% address.attributes.values.each do |value| %>
+          <th>
+            <%= value %>
+          </th>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

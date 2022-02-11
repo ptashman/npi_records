@@ -1,0 +1,22 @@
+<h1>Taxonomies</h1>
+
+<table>
+  <tbody>
+    <% @taxonomies.each do |taxonomy| %>
+      <tr>
+        <% taxonomy.attributes.keys.each do |label| %>
+          <th>
+            <%= label %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <% taxonomy.attributes.values.each do |value| %>
+          <th>
+            <%= value %>
+          </th>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

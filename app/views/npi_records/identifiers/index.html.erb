@@ -1,0 +1,22 @@
+<h1>Identifiers</h1>
+
+<table>
+  <tbody>
+    <% @identifiers.each do |identifier| %>
+      <tr>
+        <% identifier.attributes.keys.each do |label| %>
+          <th>
+            <%= label %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <% identifier.attributes.values.each do |value| %>
+          <th>
+            <%= value %>
+          </th>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

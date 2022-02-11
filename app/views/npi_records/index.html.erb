@@ -1,25 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Npi Records</h1>
+<h1>NPI Records</h1>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="3">
+        <%= form_for :npi_record do |form| %>
+          Identifier: <%= form.text_field :identifier %><br />
+          <span style="margin-left:38px">
+            <%= form.submit "Get NPI Record" %>
+          </span>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @npi_records.each do |npi_record| %>
       <tr>
-        <td><%= link_to 'Show', npi_record %></td>
-        <td><%= link_to 'Edit', edit_npi_record_path(npi_record) %></td>
-        <td><%= link_to 'Destroy', npi_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% npi_record.attributes.keys.each do |label| %>
+          <th>
+            <%= label %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <% npi_record.attributes.values.each do |value| %>
+          <th>
+            <%= value %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= link_to 'Addresses', npi_record_addresses_path(npi_record_identifier: npi_record.identifier) %></td>
+        <td><%= link_to 'Identifiers', npi_record_identifiers_path(npi_record_identifier: npi_record.identifier) %></td>
+        <td><%= link_to 'Taxonomies', npi_record_taxonomies_path(npi_record_identifier: npi_record.identifier) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Npi Record', new_npi_record_path %>

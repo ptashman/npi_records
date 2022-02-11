@@ -1,6 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
   def change
     create_table :addresses do |t|
+      t.belongs_to :npi_record
       t.string :country_code
       t.string :country_name
       t.string :address_purpose
